@@ -1,6 +1,6 @@
 # OpenCNC
 
-An open, ESP32-based CoreXY pen plotter: two NEMA17 steppers, DRV8825 drivers
+An open, ESP32-based Cartesian pen plotter: two NEMA17 steppers, DRV8825 drivers
 and a hobby servo pen lift, running [FluidNC](https://github.com/bdring/FluidNC).
 
 Separate from [PenPlot](https://github.com/adithya-in/penplot), which drives a
@@ -20,7 +20,7 @@ calibration figures are targets, not measurements.
 | Motors | 2× NEMA17, 1.8°, 200 steps/rev |
 | Drivers | 2× DRV8825, 1/16 microstepping, 1.0 A |
 | Controller | ESP32-WROOM-32, 38-pin DevKitC |
-| Firmware | FluidNC, `kinematics: CoreXY` |
+| Firmware | FluidNC, `kinematics: Cartesian` |
 | Pen lift | Hobby servo on the Z axis, 0–5 mm virtual travel |
 | Drive | GT2 belt, 6 mm, 2 mm pitch, 20T pulleys |
 | Resolution | 0.0125 mm/step (80 steps/mm) |
@@ -44,8 +44,8 @@ calibration figures are targets, not measurements.
 | Servo PWM (Z) | 13 |
 | X / Y limit | 16 / 17 |
 
-In CoreXY the two motors are **not** X and Y. FluidNC assigns motor A to
-`x.motor0` and motor B to `y.motor0`; each contributes to both axes.
+Each axis has its own motor: GPIO 26/27 drive X, GPIO 32/33 drive Y.
+There is no axis mixing, so a move in X never turns the Y motor.
 
 ## Firmware
 

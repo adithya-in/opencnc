@@ -1,7 +1,7 @@
 # OpenCNC — technical reference
 
 Complete technical description of the OpenCNC pen plotter: an ESP32-based
-CoreXY machine with two NEMA17 steppers, DRV8825 drivers and a hobby servo
+Cartesian machine with two NEMA17 steppers, DRV8825 drivers and a hobby servo
 pen lift, running [FluidNC](https://github.com/bdring/FluidNC).
 
 **Status:** design reference. The electronics are specified against the
@@ -20,13 +20,13 @@ Companion documents:
 
 | | |
 |---|---|
-| Machine | 2-axis CoreXY pen plotter |
+| Machine | 2-axis Cartesian pen plotter |
 | Working area | **340 × 460 mm** (A3 portrait) |
 | Frame | 2020 T-slot aluminium, 520 × 400 mm footprint |
 | Motors | 2× NEMA17, 1.8°, 200 steps/rev |
 | Drivers | 2× DRV8825, 1/16 microstepping, 1.0 A |
 | Controller | ESP32-WROOM-32, 38-pin DevKitC |
-| Firmware | FluidNC, `kinematics: CoreXY` |
+| Firmware | FluidNC, `kinematics: Cartesian` |
 | Pen lift | Hobby servo on the Z axis, 0–5 mm virtual travel |
 | Drive | GT2 belt, 6 mm, 2 mm pitch, 20T pulleys |
 | Resolution | **0.0125 mm/step** (80 steps/mm) |
@@ -38,7 +38,7 @@ Companion documents:
  ┌──────────────┐   WiFi / USB     ┌─────────────────────────┐
  │  Browser     │ ───────────────► │  ESP32-WROOM-32         │
  │  (PenPlot or │   GRBL protocol  │  FluidNC                │
- │   any sender)│ ◄─────────────── │  CoreXY planner         │
+ │   any sender)│ ◄─────────────── │  Cartesian planner      │
  └──────────────┘                  └────┬───────────┬────────┘
                                         │ STEP/DIR  │ PWM
                                    ┌────▼────┐  ┌───▼────┐
@@ -50,14 +50,14 @@ Companion documents:
                                    └────┬────┘
                                         │
                               ┌─────────▼──────────┐
-                              │ CoreXY belt loop   │
+                              │ X + Y belt drive   │
                               │ X gantry + Y rail  │
                               └────────────────────┘
 ```
 
-The ESP32 does no trajectory maths beyond the planner: FluidNC converts
-Cartesian moves into the two motor vectors, and the hardware step generator
-(RMT engine) emits pulses. The servo is a virtual Z axis.
+The ESP32 does no trajectory maths beyond the planner: each axis has its own
+motor, so a Cartesian move maps directly to one STEP/DIR pair. The hardware
+step generator (RMT engine) emits pulses. The servo is a virtual Z axis.
 
 ## 3. Electrical
 
@@ -98,8 +98,8 @@ Typical draw: 1.5–2.1 A at 12 V with both motors energised.
 | DRV8825 VDD | 3V3 | logic only, a few mA |
 | Power in | 5V pin | from MP1584 |
 
-In CoreXY the motors are **not** X and Y. Motor A and motor B each contribute
-to both axes; FluidNC assigns them to `x.motor0` and `y.motor0` respectively.
+Each axis has its own motor. `x.motor0` is the X stepper and `y.motor0` is the
+Y stepper; there is no axis mixing.
 
 ### 3.3 DRV8825 configuration
 
@@ -205,7 +205,7 @@ stepping:
   disable_delay_us: 0
 
 kinematics:
-  corexy:
+  Cartesian:
 
 axes:
   shared_stepper_disable_pin: gpio.25:low
@@ -217,7 +217,7 @@ axes:
     max_travel_mm: 310
     soft_limits: false
     homing:
-      cycle: 1
+      cycle: 2
       positive_direction: false
       mpos_mm: 0
       feed_mm_per_min: 500
@@ -257,7 +257,7 @@ axes:
     max_travel_mm: 5
     soft_limits: false
     homing:
-      cycle: 3
+      cycle: 1
       positive_direction: false
       mpos_mm: 0
     motor0:
@@ -269,9 +269,10 @@ axes:
         timer_ms: 20
 ```
 
-**Homing notes.** CoreXY cannot home X and Y in the same pass — each logical
-axis move drives both motors. Put every axis on its own `cycle`. With no
-switches fitted, set `cycle: -1` and origin manually with `G92`.
+**Homing notes.** On a Cartesian gantry each axis has its own motor, so X and
+Y can share a homing `cycle` and home simultaneously. Z (the servo) sits on
+its own cycle. With no switches fitted, set `cycle: -1` and origin manually
+with `G92`.
 
 **Steps/mm derivation.** 20T GT2 pulley = 40 mm/rev. 200 steps/rev × 16
 microsteps = 3200 steps/rev. 3200 ÷ 40 = **80 steps/mm**. Change
@@ -297,25 +298,36 @@ single bracket on a T-slot joint creeps under belt tension. Printed PETG
 brackets are sufficient here because the baseboard carries the stiffness — see
 [5.4](#54-printed-parts).
 
-### 5.2 CoreXY belt path
+### 5.2 Belt drive
 
-Two closed loops, one per motor, both moving the same carriage. Motor A is
-mounted at the rear-left, motor B at the rear-right. Each loop passes over
-four idlers and terminates on the carriage.
+One belt per axis. This is a Cartesian gantry, so the two axes are independent
+— there is no shared loop and no belt crossing.
+
+- **X belt** runs along the gantry beam. The X motor sits at one end of the
+  beam and drives the carriage; the idler and tensioner sit at the other end.
+- **Y belt** runs along the frame and moves the whole X gantry. The Y motor
+  sits at a rear corner, the idler at the opposite corner.
 
 Two rules that decide whether it works:
 
-1. **The loops must cross in different Z planes.** Stack the pulleys with a
-   3–5 mm spacer, or the belts rub.
-2. **Belt plane close to the beam centreline.** An offset belt applies a
-   twisting moment to the 2020, which shows up as skew, not sag.
+1. **Belt parallel to its rail.** A belt that isn't parallel pulls the
+   carriage sideways, which shows up as skew and as one end of the axis
+   binding.
+2. **Belt plane close to the rail centreline.** An offset belt applies a
+   twisting moment to the 2020, which also shows up as skew.
 
-Belt length ≈ `2 × (X + Y) + allowance` per loop ≈ 1.65 m, so **5 m** covers
-both with waste.
+Belt length ≈ `2 × travel + allowance`:
+
+| Axis | Travel | Belt |
+|---|---|---|
+| X | 340 mm | ≈ 0.9 m |
+| Y | 460 mm | ≈ 1.2 m |
+
+So **≈ 2.2 m** total, and 3 × 1 m lengths give margin for tensioning.
 
 ### 5.3 Motion and pen lift
 
-- 4× smooth idlers, 20T, 5 mm bore
+- 4× smooth idlers, 20T, 5 mm bore (two per axis)
 - GT2 belt 6 mm, 2 mm pitch
 - Printed sliders on plain T-slot (cheapest) or mini V-wheels on V-slot
 - Pen arm kept under ~80 mm and supported at both ends; a long unsupported

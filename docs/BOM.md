@@ -1,6 +1,6 @@
 # OpenCNC — bill of materials
 
-Components selected for the OpenCNC CoreXY pen plotter. Prices checked
+Components selected for the OpenCNC Cartesian pen plotter. Prices checked
 November 2026, GST included.
 
 | # | Part | Qty | Unit ₹ | Total ₹ | Source |
