@@ -22,12 +22,12 @@ November 2026, GST included.
 | 15 | Power switch | 1 | 9.00 | 9.00 | [Robu](https://robu.in/product/1-month-warranty-585/) |
 | 16 | Mini MP1584 buck module | 1 | 49.00 | 49.00 | [Robu](https://robu.in/product/mini-mp1584-dc-dc-3a-adjustable-buck-module-india/) |
 | 17 | M4 T-nut for 2020 profile | 8 | 8.70 | 69.60 | [OnlyScrews](https://onlyscrews.in/products/m4-profile-nuts-mild-steel-with-nickel-plating-for-2020-series-t-nut-hammer-nut) |
-| 18 | M5 nyloc nut | 6 | 1.20 | 7.20 | [OnlyScrews](https://onlyscrews.in/products/m5-nyloc-nuts-mild-steel-with-zinc-plating-dia-5mm) |
-| 19 | M5 × 40 mm socket head screw, 12.9 | 6 | 3.00 | 18.00 | [OnlyScrews](https://onlyscrews.in/products/m5-x-40mm-hex-allen-socket-head-high-tensile12-9-black-oxide-screw-dia-5mm-length-40mm) |
+| 18 | M5 nyloc nut | 8 | 1.20 | 9.60 | [OnlyScrews](https://onlyscrews.in/products/m5-nyloc-nuts-mild-steel-with-zinc-plating-dia-5mm) |
+| 19 | M5 × 40 mm socket head screw, 12.9 | 8 | 3.00 | 24.00 | [OnlyScrews](https://onlyscrews.in/products/m5-x-40mm-hex-allen-socket-head-high-tensile12-9-black-oxide-screw-dia-5mm-length-40mm) |
 | 20 | M3 × 8 mm pan head screw | 10 | 0.64 | 6.40 | [OnlyScrews](https://onlyscrews.in/products/m3-x-8mm-phillips-pan-head-mild-steel-with-zinc-blue-plating-screw-dia-3mm-length-8mm) |
 | 21 | SPDT micro switch, 1 A 30 V | 2 | 11.00 | 22.00 | [Robu](https://robu.in/product/dm1-16ud-1-xkb-1a-30v-single-pole-double-throw-spdt-micro-switch-1000000-times-plugin-limit-switches-rohs/) |
 | 22 | Electrolytic capacitor, 1000 µF / 25 V | 1 | 5.00 | 5.00 | [Robu](https://robu.in/product/hy1e102m100170cd288-hyncdz-1000uf-25v-55m%CF%89100khz-%C2%B120-1-45a100khz-plugind10xl17mm-aluminum-electrolytic-capacitors-leaded-rohs/) |
-| | **Total** | | | **₹3,152.00** | |
+| | **Total** | | | **₹3,160.37** | |
 
 ## Notes
 
