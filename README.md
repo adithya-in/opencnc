@@ -38,8 +38,8 @@ calibration figures are targets, not measurements.
 
 | Function | GPIO |
 |---|---|
-| Motor A STEP / DIR | 26 / 27 |
-| Motor B STEP / DIR | 32 / 33 |
+| X motor STEP / DIR | 26 / 27 |
+| Y motor STEP / DIR | 32 / 33 |
 | Shared driver enable | 25 |
 | Servo PWM (Z) | 13 |
 | X / Y limit | 16 / 17 |

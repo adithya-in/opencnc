@@ -87,10 +87,10 @@ Typical draw: 1.5–2.1 A at 12 V with both motors energised.
 
 | Function | GPIO | Notes |
 |---|---|---|
-| Motor A STEP (`x.motor0`) | **26** | |
-| Motor A DIR | **27** | |
-| Motor B STEP (`y.motor0`) | **32** | |
-| Motor B DIR | **33** | |
+| X motor STEP (`x.motor0`) | **26** | |
+| X motor DIR | **27** | |
+| Y motor STEP (`y.motor0`) | **32** | |
+| Y motor DIR | **33** | |
 | Shared driver enable | **25** | active LOW |
 | Servo PWM (Z axis) | **13** | 50 Hz |
 | X limit switch | **16** | internal pull-up |
