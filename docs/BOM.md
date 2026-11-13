@@ -1,0 +1,113 @@
+# OpenCNC — bill of materials
+
+ESP32-WROOM-32 + 2× DRV8825 + MP1584 buck, driving a CoreXY pen plotter with a
+servo pen lift, running FluidNC.
+
+Prices checked November 2026, GST included where applicable. Stock is stated
+where it could be verified; `—` means it was not confirmed.
+
+## Electronics
+
+| Ref | Part | Spec | Qty | Unit ₹ | Total ₹ | Stock | Source |
+|---|---|---|---|---|---|---|---|
+| U1 | ESP32-WROOM-32 DevKit | 38-pin, socketed | 1 | 449 | 449 | **Out of stock** | [Robu](https://robu.in/product/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core/) |
+| U2, U3 | DRV8825 module | with aluminium heatsink | 2 | 89 | 178 | — | [Robu](https://robu.in/product/drv8825-stepper-motor-driver-with-aluminum-heat-sink/) |
+| U4 | Mini MP1584 buck module | 12 V → 5 V, 3 A | 1 | 49 | 49 | In stock | [Robu](https://robu.in/product/mini-mp1584-dc-dc-3a-adjustable-buck-module-india/) |
+| C1 | Electrolytic | 1000 µF / 25 V, 10×17 mm, 105 °C | 1 | 5 | 5 | In stock | [Robu](https://robu.in/product/hy1e102m100170cd288-hyncdz-1000uf-25v-55m%CF%89100khz-%C2%B120-1-45a100khz-plugind10xl17mm-aluminum-electrolytic-capacitors-leaded-rohs/) |
+| C2, C3 | Electrolytic | 100 µF / 25 V | 2 | 4.64 | 9.28 | **Out of stock** | [Robu](https://robu.in/product/100uf-25v-electrolytic-capacitor-pack-of-10/) |
+| C4, C5 | Ceramic disc | 100 nF / 50 V | 2 | 0.85 | 1.70 | — | [Robu](https://robu.in/product/100nf-50v-disc-capacitor/) |
+| R1, R2 | Resistor | 10 kΩ, 0805 (FLT pull-up) | 2 | 0.16 | 0.32 | — | [Robu](https://robu.in/product/10k-ohm-1-4w-0805-surface-mount-chip-resistor-pack-of-10/) |
+| F1 | Ceramic fuse | 5×20 mm, **T3A** slow-blow | 1 | 6 | 6 | — | Local / Vishaworld |
+| — | Fuse holder | 5×20 PCB mount (BF008) | 1 | 18 | 18 | In stock | [Robu](https://robu.in/product/fuse-holder-bf008-108520/) |
+| J1 | DC barrel jack | DC-005, 5.5×2.1 mm, PCB mount | 1 | 19 | 19 | In stock | [Robu](https://robu.in/product/dc-005-female-dc-power-jack-supply-socket-5-5x2-1mm/) |
+| — | Female header strip | 2.54 mm, 1×40 (for U1 socket) | 1 | 75 | 75 | — | [Robu](https://robu.in/product/1-40-pin-2-54m-straight-long-female-berg-strip-connector-pack-of-5/) |
+| — | Male header strip | 2.54 mm, 1×40 (cut for J2–J6) | 1 | 5 | 5 | — | [Robu](https://robu.in/product/2-54mm-1x40-pin-male-single-row-straight-short-header-strip-pack-of-3/) |
+| — | Jumper caps | 2.54 mm shunts | 6 | 1.60 | 9.60 | — | [Robu](https://robu.in/product/black-254mm-standard-circuit-board-computer-jumper-cap-shunts-short-circuit-cap/) |
+| D1 | Schottky diode | SS34, 3 A (reverse polarity) | 1 | 5 | 5 | — | Local |
+| **Electronics subtotal** | | | | | **₹829.90** | | |
+
+## Mechanical parts
+
+2020 T-slot frame, CoreXY belt drive, A3 portrait working area. Structural
+parts other than the extrusion, fasteners and bearings are 3D printed.
+
+| Part | Spec | Qty | Unit ₹ | Total ₹ | Source |
+|---|---|---|---|---|---|
+| 2020 T-slot extrusion | 500 mm lengths | 5 | 239 | 1195 | [Robu](https://robu.in/product/easymech-20x20-t-slot-aluminium-extrusion-profile-500-mm/) |
+| MDF baseboard | 6 mm, 600 × 500 | 1 | 250 | 250 | Local |
+| M5 T-nuts | 10-pack, sliding | 4 | 22 | 88 | [Robu](https://robu.in/product/easymech-sliding-m5-t-nut-for-20x20-aluminium-profile-10-pcs/) |
+| M3 T-nuts + screws | set | 1 | 150 | 150 | Local |
+| M3/M5 fastener assortment | socket head + washers | 1 | 250 | 250 | Local |
+| GT2 drive pulley | 20T, **5 mm bore**, 2-pack | 1 | 126 | 126 | [Robu](https://robu.in/product/aluminum-gt2-timing-pulley-for-6mm-belt-20-tooth-5mm-bore-2pcs/) |
+| GT2 smooth idler | 20T, 5 mm bore, 2-pack | 2 | 160 | 320 | [Robu](https://robu.in/product/aluminum-gt2-timing-idler-pulley-6mm-belt-20-tooth-5mm-bore-2pcs/) |
+| GT2 belt | 6 mm, 2 mm pitch, 10 m | 1 | 635 | 635 | [Robu](https://robu.in/product/10m-gt2-width-6mm-black-open-timing-belt-for-3d-printer/) |
+| 625ZZ bearings | 5×16×5, 4-pack (printed idlers) | 2 | 65 | 130 | Robu |
+| Springs | pen lift, 3×15 mm | 4 | 10 | 40 | Local |
+| Cable ties + spiral wrap | | 1 | 80 | 80 | Local |
+| PETG filament | ~400 g for all printed parts | 1 | 400 | 400 | Local |
+| **Mechanical subtotal** | | | | **₹3,664** | |
+
+### Printed parts
+
+Printed in **PETG**, not PLA — a NEMA17 at 1 A reaches 50–60 °C, which is at
+PLA's glass transition, and PLA creeps under sustained belt tension.
+
+| Printed part | Replaces | Notes |
+|---|---|---|
+| Corner brackets × 8 | bought brackets | External gussets, two faces per corner, aluminium faces still touching |
+| Motor mounts × 2 | machined mounts | Leave an air gap around the motor body |
+| Idler mounts + belt tensioners | | M5 bolts as axles, never printed pins |
+| Carriage plates × 2 | | 5 perimeters; flex shows up as backlash |
+| Pen holder + lift arm | | |
+| Servo mount | | |
+| Limit switch mounts × 2 | | |
+| PCB standoffs × 4 | | |
+| Cable clips, feet | | |
+
+Print settings: **4–5 perimeters, 40–60 % gyroid infill, 0.2 mm layers**,
+layers oriented perpendicular to the peel load, **washers under every screw
+head**. Torque M5 to 2–3 N·m — more just embosses the plastic.
+
+The frame's stiffness comes from bolting the profiles to the MDF baseboard, not
+from the brackets. The brackets only locate it square, which is why printed
+ones are acceptable here.
+
+### Cutting the frame cost
+
+Robu extrusion is **₹478/m**. A local aluminium dealer or IndiaMART supplier
+sells 2020 T-slot at **₹180–250/m**, so 2.5 m is ₹450–625 instead of ₹1,195 —
+**saves ₹570–745**. This is the largest single saving in the build.
+
+| Change | Saves |
+|---|---|
+| Local extrusion instead of Robu | ₹570–745 |
+| Skip 625ZZ bearings if the idler packs include them | ₹130 |
+| Print idler pulleys instead of buying | ₹160 |
+
+## PCB fabrication
+
+| Item | ₹ |
+|---|---|
+| 5× 2-layer ~100×65 mm, JLCPCB economy shipping | ~700 |
+| 5× 2-layer, DHL express | ~1,800 |
+
+## Totals
+
+| Scenario | Electronics + PCB | Mechanicals | Grand total |
+|---|---|---|---|
+| Robu extrusion, economy PCB shipping | ₹1,530 | ₹3,664 | **₹5,194** |
+| Local extrusion, economy PCB shipping | ₹1,530 | ₹2,969 | **₹4,499** |
+| Local extrusion, no spare bearings | ₹1,530 | ₹2,839 | **₹4,369** |
+| 5 boards built, local extrusion | ₹1,060/board | ₹2,969 | **₹4,029** |
+
+## Out-of-stock items
+
+- **ESP32-WROOM-32 38-pin (₹449).** Any 38-pin WROOM devkit works — the board
+  only needs the 2×19 header grid. A 30-pin DevKit V1 needs a different
+  footprint.
+- **100 µF / 25 V (₹4.64).** Any 100 µF 25 V electrolytic substitutes. Prefer
+  low-ESR; these sit at the drivers, not at the power entry.
+
+## Not included
+
+2× NEMA17, servo and the 12 V adaptor (~₹1,400 if bought new).
