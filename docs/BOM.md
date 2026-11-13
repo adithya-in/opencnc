@@ -27,7 +27,8 @@ November 2026, GST included.
 | 20 | M3 × 8 mm pan head screw | 10 | 0.64 | 6.40 | [OnlyScrews](https://onlyscrews.in/products/m3-x-8mm-phillips-pan-head-mild-steel-with-zinc-blue-plating-screw-dia-3mm-length-8mm) |
 | 21 | SPDT micro switch, 1 A 30 V | 2 | 11.00 | 22.00 | [Robu](https://robu.in/product/dm1-16ud-1-xkb-1a-30v-single-pole-double-throw-spdt-micro-switch-1000000-times-plugin-limit-switches-rohs/) |
 | 22 | Electrolytic capacitor, 1000 µF / 25 V | 1 | 5.00 | 5.00 | [Robu](https://robu.in/product/hy1e102m100170cd288-hyncdz-1000uf-25v-55m%CF%89100khz-%C2%B120-1-45a100khz-plugind10xl17mm-aluminum-electrolytic-capacitors-leaded-rohs/) |
-| | **Total** | | | **₹3,160.37** | |
+| 23 | POM V-wheel, Type B with 625RS bearing, white | 6 | 72.00 | 432.00 | [Novo3D](https://novo3d.in/pom-v-wheel/?attribute_type=Type%20B%20with%20625rs%20white) |
+| | **Total** | | | **₹3,592.37** | |
 
 ## Notes
 
@@ -35,3 +36,7 @@ November 2026, GST included.
   power switch. Confirm or replace before ordering.
 - Item 22 is 1000 µF. A "1000 nF" capacitor would be 1 µF, which is not a
   substitute for the bulk cap.
+- Item 23 is a V-wheel, which requires **V-slot** profile to track properly.
+  Item 6 is listed as T-slot; on a flat T-slot face the wheel runs without
+  self-centring. Either source V-slot extrusion or plan to use printed sliders
+  instead.
