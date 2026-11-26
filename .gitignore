@@ -2,3 +2,4 @@ node_modules/
 .DS_Store
 *.log
 firmware/arduino/grbl-pen-servo/build/
+firmware/arduino/motor-test/build/
