@@ -1,8 +1,4 @@
 node_modules/
 .DS_Store
 *.log
-firmware/arduino/grbl-pen-servo/build/
-firmware/arduino/motor-test/build/
-firmware/arduino/spin-all/build/
-firmware/arduino/diag/build/
-firmware/arduino/en-test/build/
+firmware/arduino/*/build/
