@@ -136,8 +136,18 @@ the defaults above.
 | Symptom | Cause | Fix |
 |---|---|---|
 | No response on serial | wrong port or baud | 115200, check `arduino-cli board list` |
+| **Motor shaft free, 12 V present, no torque** | **EN jumper missing on the CNC Shield** — D8 never reaches the drivers and the shield's pull-up keeps them disabled | Fit the EN jumper |
 | Motors whine, don't turn | microstep jumpers missing | fit M0/M1/M2 |
+| Driver enabled (shaft stiff) but no movement | Vref at zero | set 0.50 V (DRV8825) / 0.80 V (A4988) |
 | Pen doesn't move | servo not on D11 | check the shield's Spindle PWM pin |
 | Drawing wrong size | steps/mm vs jumpers mismatch | fix `$100`/`$101` |
 | One axis reversed | direction | `$3` bitmask |
 | Servo twitches at rest | shared 5 V sagging | separate 5 V BEC + 1000 µF |
+
+## Bring-up order that avoids the traps
+
+1. Power off. Fit both drivers **and the EN jumper**. Check the shield seats evenly on both header rows.
+2. Power on. The motor shafts should now resist turning by hand.
+3. Flash `firmware/arduino/spin-all` — all axes should rotate. If they don't, it's Vref or coils, not firmware.
+4. Set Vref (0.50 V for DRV8825 at 1 A).
+5. Flash GRBL and apply the settings.
