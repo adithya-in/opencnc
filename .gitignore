@@ -3,3 +3,4 @@ node_modules/
 *.log
 firmware/arduino/grbl-pen-servo/build/
 firmware/arduino/motor-test/build/
+firmware/arduino/spin-all/build/
